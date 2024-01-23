@@ -1,0 +1,7 @@
+strict graph G {
+  1 [ label="C02" ];
+  2 [ label="C01" ];
+  3 [ label="C05" ];
+  1 -- 3 [ ];
+  2 -- 1 [ ];
+}
