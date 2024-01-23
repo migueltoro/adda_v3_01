@@ -19,10 +19,7 @@ public class AList<E> {
 	public static <E> AList<E> empty() {
 		return new AList<E>();
 	}
-	
-	public static <E> AList<E> empty2() {
-		return new AList<E>();
-	}
+
 
 	public static <E> AList<E> of(int capacity) {
 		return new AList<E>(capacity);
