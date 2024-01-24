@@ -11,12 +11,6 @@ public class PermutationAlumnosAG implements SeqNormalData<SolucionAlumnos> {
 	public PermutationAlumnosAG(String fichero) {
 		DatosAlumnos.iniDatos(fichero);
 	}
-
-//	@Override
-//	public Integer size() {
-//		return DatosAlumnos.getNumAlumnos();
-//	}
-
 	
 	@Override
 	public ChromosomeType type() {
@@ -39,9 +33,12 @@ public class PermutationAlumnosAG implements SeqNormalData<SolucionAlumnos> {
 	}
 
 	@Override
-	public SolucionAlumnos solucion(List<Integer> value) {
-		// TODO Auto-generated method stub
-		return SolucionAlumnos.of(value);
+	public SolucionAlumnos solucion(List<Integer> ls) {
+		SolucionAlumnos res = SolucionAlumnos.empty();
+		for(int i=0; i<ls.size(); i++) {
+			res.add(ls.get(i), i/DatosAlumnos.getTamGrupo());
+		}
+		return res;
 	}
 
 	@Override

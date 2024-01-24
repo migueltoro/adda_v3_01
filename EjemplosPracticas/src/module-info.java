@@ -7,10 +7,6 @@ module practicas_22_23 {
 	exports us.lsi.p5.ej_1;
 	exports us.lsi.p5.ej_2;
 	exports us.lsi.p5.ej_3;
-	exports us.lsi.enero_2024.e4;
-	exports us.lsi.enero_2024.e3;
-	exports us.lsi.enero_2023.e1;
-	exports us.lsi.enero_2024.e1;
 	exports us.lsi.p4.ej_3;
 	exports us.lsi.p4.ej_2;
 	exports us.lsi.p4.ej_1;
