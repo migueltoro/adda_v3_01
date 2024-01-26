@@ -11,7 +11,7 @@ public class Test {
 
 	public static void main(String[] args) {
 		Locale.setDefault(Locale.of("en", "US"));
-		DatosMatrices.leeFichero("./ficheros/matrices.txt",Data.DpType.Min);
+		DatosMatrices.leeFichero("ficheros/matrices/matrices.txt",Data.DpType.Min);
 		MatrixVertexD p = MatrixVertexD.initial();
 		String2.toConsole(p.actions().toString());
 		String2.toConsole(p.edgesOf().toString());
