@@ -7,8 +7,8 @@ import org.jgrapht.GraphPath;
 import org.jgrapht.graph.SimpleDirectedGraph;
 
 import us.lsi.colors.GraphColors;
+import us.lsi.graphs.Graphs2;
 import us.lsi.graphs.alg.GreedyOnGraph;
-import us.lsi.graphs.views.PathToGraph;
 import us.lsi.graphs.virtual.EGraph;
 import us.lsi.graphs.virtual.EGraph.Type;
 import us.lsi.mochila.datos.DatosMochila;
@@ -58,7 +58,7 @@ public class TestGreadyMochila {
 //		System.out.println(rr.weightToEnd());
 		System.out.println("________________");
 		System.out.println(gp.getWeight());
-		SimpleDirectedGraph<MochilaVertex, MochilaEdge> g = PathToGraph.pathToGraph(gp);
+		SimpleDirectedGraph<MochilaVertex, MochilaEdge> g = Graphs2.addPathToGraph(gp);
 		GraphColors.toDot(g,
 				"ficheros/MochilaGreadyPath.gv",
 				v->String.format("((%d,%d)",v.index(),v.capacidadRestante()),
