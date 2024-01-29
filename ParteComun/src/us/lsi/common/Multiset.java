@@ -149,37 +149,57 @@ public class Multiset<E>  {
 		return Multiset.add(this,m2);
 	}
 	
-	public static <E> Multiset<E> substract(Multiset<E> m1, Multiset<E> m2) {
+	public static <E> Multiset<E> difference(Multiset<E> m1, Multiset<E> m2) {
 		Set<E> st = Set2.union(m1.elementSet(),m2.elementSet());
 		Multiset<E> r = Multiset.empty();
 		st.stream().forEach(x->r.add(x,m1.count(x)-m2.count(x)>=0?m1.count(x)-m2.count(x):0));
 		return r;
 	}
 	
-	public Multiset<E> substract(Multiset<E> m2) {
-		return Multiset.substract(this,m2);
+	public Multiset<E> difference(Multiset<E> m2) {
+		return Multiset.difference(this,m2);
 	}
 	
-	public static <E> Multiset<E> max(Multiset<E> m1, Multiset<E> m2) {
+	public static <E> Multiset<E> union(Multiset<E> m1, Multiset<E> m2) {
 		Set<E> st = Set2.union(m1.elementSet(),m2.elementSet());
 		Multiset<E> r = Multiset.empty();
-		st.stream().forEach(x->r.add(x,m1.count(x)>=m2.count(x)?m1.count(x):m2.count(x)));
+		st.stream().forEach(x->r.add(x,Math.max(m1.count(x),m2.count(x))));
 		return r;
 	}
 	
-	public Multiset<E> max(Multiset<E> m2) {
-		return Multiset.max(this,m2);
+	public Multiset<E> union(Multiset<E> m2) {
+		return Multiset.union(this,m2);
 	}
 	
-	public static <E> Multiset<E> min(Multiset<E> m1, Multiset<E> m2) {
+	public static <E> Multiset<E> intersection(Multiset<E> m1, Multiset<E> m2) {
 		Set<E> st = Set2.union(m1.elementSet(),m2.elementSet());
 		Multiset<E> r = Multiset.empty();
-		st.stream().forEach(x->r.add(x,m1.count(x)<=m2.count(x)?m1.count(x):m2.count(x)));
+		st.stream().forEach(x->r.add(x,Math.min(m1.count(x),m2.count(x))));
 		return r;
 	}
 	
-	public Multiset<E> min(Multiset<E> m2) {
-		return Multiset.max(this,m2);
+	public Multiset<E> intersection(Multiset<E> m2) {
+		return Multiset.union(this,m2);
+	}
+	
+	public static <E> Multiset<E> symmetricDifference(Multiset<E> m1, Multiset<E> m2) {
+		Set<E> st = Set2.union(m1.elementSet(),m2.elementSet());
+		Multiset<E> r = Multiset.empty();
+		st.stream().forEach(x->r.add(x,Math.abs(m1.count(x)-m2.count(x))));
+		return r;
+	}
+	
+	public Multiset<E> symmetricDifference(Multiset<E> m2) {
+		return Multiset.symmetricDifference(this,m2);
+	}
+	
+	public static <E> Boolean isIncluded(Multiset<E> m1, Multiset<E> m2) {
+		Set<E> st = Set2.union(m1.elementSet(),m2.elementSet());
+		return st.stream().allMatch(x->m1.count(x) <= m2.count(x));
+	}
+	
+	public Boolean isIncluded(Multiset<E> m2) {
+		return Multiset.isIncluded(this,m2);
 	}
 
 	public Integer remove(Object e) {
@@ -195,10 +215,12 @@ public class Multiset<E>  {
 		return r;
 	}
 	
-	
-	
 	public int size() {
 		return elements.size();
+	}
+	
+	public int itemsNumber() {
+		return elements.keySet().stream().mapToInt(e->this.count(e)).sum();
 	}
 
 	public String toString() {
